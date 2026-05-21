@@ -317,6 +317,18 @@
                  // forEach: outra forma de percorrer uma array
                  cobra.forEach( (pedaco, indice) => {
 
+
+                    //-------- PASSO 4: Desenhar a comida (círculo vermelho)
+                    ctx.fillStyle = '#dc3545';
+                    ctx.beginPath();
+                    ctx.arc(
+                        comida.x *tamanhoQuadrado + tamanhoQuadrado / 2,
+                        comida.y * tamanhoQuadrado + tamanhoQuadrado / 2,
+                        tamanhoQuadrado / 2 - 2,
+                        0,
+                        Math.PI * 2    
+                    );
+
                     let cor_do_pedaco = '#8B40000';
                     if(indice === 0){
                         cor_do_pedaco = '#2d5016';
