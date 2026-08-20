@@ -314,9 +314,12 @@
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                 ctx.fillStyle = 'white';
-                ctx.fonte = 'bold 40px Arial';
+                ctx.font = 'bold 40px Arial';
                 ctx.textAlign = 'center';
                 ctx.fillText('FIM DE JOGO', canvas.width / 2, canvas.height / 2);
+
+                ctx.font = '20px Arial';
+                ctx.fillText(`Pontuacao: ${pontos}`, canvas.width / 2, (canvas.height / 2) + 50);
             }
 
             //=============================
