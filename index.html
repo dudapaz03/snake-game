@@ -291,7 +291,10 @@
 
 
                //verificar colisão com paredes (cima ou abaixo)
-               
+               if(cabeca.x < 0 || cabeca.x >= quantidadeQuadrados){
+                    fimDeJogo();
+                    return;
+               }
 
 
                // adiciona nova cabeça
