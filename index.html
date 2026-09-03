@@ -437,15 +437,25 @@
                 }
             }
             
+
+            //====================
+            //===== PAUSAR JOGO
+            //====================
             function pausarJogo(){
-                console.log('Pausa no Jogo!!')
+                pausarJogo = !pausarJogo;
+             
+                if(pausarJogo === true){
+                    clearInterval(intervaloJogo);
+                }else{
+                    intervaloJogo = setIntervalo(atualizarJogo, 500);
+                }
             }
 
             //==========================
             //=== CONTROLE DE TECLADO 
             //=========================
             document.addEventListener('keydown', function(event){
-                alert (event.key === 'ArrowDown'){
+                if(event.key === 'ArrowDown'){
                     mudarDirecao('baixo');
                 }else if(event.key === 'ArrowUp'){
                     mudarDirecao ('cima');
