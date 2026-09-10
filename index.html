@@ -522,8 +522,8 @@
                 if(jogoPausado){
                     clearInterval(intervaloJogo);
 
-                    // AQUI --> implementar uma mensagem do tipo
-                    // JOGO PAUSADO p/ aparecer na tela
+                    ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
                 }else{
                     intervaloJogo = setInterval(atualizarJogo, 500);
                 }
