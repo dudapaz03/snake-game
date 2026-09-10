@@ -69,74 +69,7 @@
 
                 padding: 12px 25px;
                 color: white;
-                border: none;<!DOCTYPE html>
-
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <!--
-             <meta charset> Define o conjunto de caracteres (enconding) 
-             da página. UTF-8 garante que acentos e caracteres especiais
-             apareçam corretamente.
-        -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <!--
-        <meta viewport>:  esta tag é imortante para sites que devem funcionar
-        em dispositivos móveis (celular). width-device -> garate que a
-        largura da página vai ser adaptar à largura do dispositivo.
-        initial-scale=1 -> não aplica zoom automático ao abrir a página. 
-        Sem ela o celular vai tentar mostrar a página como se fosse um computador
-        -->
-        <title>Jogo da Cobrinha</title>
-
-        <!--
-        Estilos e CSS vão ficar abaixo desta linha - Próxima Aual
-        -->
-
-        <style>
-
-            .container {
-              text-align: center;  
-              background-color: white;
-              padding: 30px;
-              border-radius: 20px;
-              box-shadow: 0px 10px 30px black;
-            }
-
-            .info {
-                font-size: 1em;
-            }
-
-            .pontuacao {
-                font-weight: bold;
-                color: #28a745;
-            }
-
-            .recorde {
-                font-weight: bold;
-                color: #a72839;  
-            }
-
-            #canvas{
-                border: 3px solid #333;
-                border-radius:  10px;
-                background-color: #F0F0F0;
-                display: block;
-
-                margin: 20px auto;
-                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-            }
-
-            .controles {
-                margin-top: 20px;
-            }
-
-            button {
-                
-                font-size: 16px;
-                cursor: pointer;
-                background-color: #28A745;
+                border: none;
                 border-radius: 8px;
                 margin: 5px;
                 transition: all 0.3s ease;
@@ -528,7 +461,7 @@
                     ctx.fillStyle = 'white';
                     ctx.font = '30px Arial';
                     ctx.textAlign = 'center';
-                    ctx.fillText('PAUSADO!', canvas.width/2, canvas.height/2);
+                    ctx.fillText('PAUSADO!', canvas.width/2, canvas.height/2); 
                     
                 }else{
                     intervaloJogo = setInterval(atualizarJogo, 500);
