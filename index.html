@@ -68,8 +68,75 @@
                 background-color: #28A745;
 
                 padding: 12px 25px;
-                color: rgb(28, 243, 9);
-                border: none;
+                color: white;
+                border: none;<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <!--
+             <meta charset> Define o conjunto de caracteres (enconding) 
+             da página. UTF-8 garante que acentos e caracteres especiais
+             apareçam corretamente.
+        -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!--
+        <meta viewport>:  esta tag é imortante para sites que devem funcionar
+        em dispositivos móveis (celular). width-device -> garate que a
+        largura da página vai ser adaptar à largura do dispositivo.
+        initial-scale=1 -> não aplica zoom automático ao abrir a página. 
+        Sem ela o celular vai tentar mostrar a página como se fosse um computador
+        -->
+        <title>Jogo da Cobrinha</title>
+
+        <!--
+        Estilos e CSS vão ficar abaixo desta linha - Próxima Aual
+        -->
+
+        <style>
+
+            .container {
+              text-align: center;  
+              background-color: white;
+              padding: 30px;
+              border-radius: 20px;
+              box-shadow: 0px 10px 30px black;
+            }
+
+            .info {
+                font-size: 1em;
+            }
+
+            .pontuacao {
+                font-weight: bold;
+                color: #28a745;
+            }
+
+            .recorde {
+                font-weight: bold;
+                color: #a72839;  
+            }
+
+            #canvas{
+                border: 3px solid #333;
+                border-radius:  10px;
+                background-color: #F0F0F0;
+                display: block;
+
+                margin: 20px auto;
+                box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .controles {
+                margin-top: 20px;
+            }
+
+            button {
+                
+                font-size: 16px;
+                cursor: pointer;
+                background-color: #28A745;
                 border-radius: 8px;
                 margin: 5px;
                 transition: all 0.3s ease;
@@ -86,8 +153,8 @@
             .tecla{
                 width: 50px;
                 height: 50px;
-                background-color: #f71818f3;
-                color: #21ff04;
+                background-color: #667eea;
+                color: #F0F0F0;
                 border: none;
                 cursor: pointer;
                 border-radius: 45px;
@@ -118,7 +185,7 @@
 
             .instrucoes h3 {
                 margin-bottom: 10px;
-                color: #67fa05;
+                color: #333;
             }
 
             /*   
@@ -247,7 +314,7 @@
                 }
 
                 //executa a função atualizarJogo a cada 100 milisegundos
-                intervaloJogo = setInterval(atualizarJogo, 500);
+                intervaloJogo = setInterval(atualizarJogo, 700);
             }
 
 
@@ -288,14 +355,11 @@
                     return;
                }
 
-
-
                //verificar colisão com paredes (cima ou abaixo)
-               if(cabeca.y < 0 || cabeca.y >= quantidadeQuadrados){
+                if(cabeca.y < 0 || cabeca.y >= quantidadeQuadrados){
                     fimDeJogo();
                     return;
                }
-
 
                // adiciona nova cabeça
                cobra.unshift(cabeca);
@@ -303,14 +367,18 @@
                cobra.pop();
                desenhar();                
             }
+            
+            
             //============================
             // FIM DE JOGO
             //============================
             function fimDeJogo(){
                 jogoAtivo = false;
+                
                 clearInterval(intervaloJogo);
 
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.7)'
+                //Desenhar mensagm de FIM DE JOGO
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
                 ctx.fillStyle = 'white';
@@ -319,7 +387,7 @@
                 ctx.fillText('FIM DE JOGO', canvas.width / 2, canvas.height / 2);
 
                 ctx.font = '20px Arial';
-                ctx.fillText(`Pontuacao: ${pontos}`, canvas.width / 2, (canvas.height / 2) + 50);
+                ctx.fillText(`Pontuação: ${pontos}`, canvas.width / 2, (canvas.height / 2) + 50);
             }
 
             //=============================
@@ -394,7 +462,7 @@
             }
 
             //=============================
-            //====FUNÇÃO PARA GERAR COMIDA
+            //==== GERAR COMIDA
             //=============================
             function gerarComida(){
                 let posicaoValida = false;
@@ -418,6 +486,9 @@
                 }
             }
 
+            //============================
+            //=====  MUDA A DIREÇÃO DA COBRA - CIMA, BAIXO, ESQUE, DIREI
+            //=============================
             function mudarDirecao(novaDirecao){
               
                 if(novaDirecao === 'cima'    &&  direcao !== 'baixo'){
@@ -438,40 +509,49 @@
             }
             
 
-            //====================
-            //===== PAUSAR JOGO
-            //====================
+            //============================
+            //==== PAUSAR O JOGO
+            //============================
             function pausarJogo(){
+                if(!jogoAtivo){
+                    return;
+                }
+
                 jogoPausado = !jogoPausado;
-             
-                if(jogoPausado === true){
+
+                if(jogoPausado){
                     clearInterval(intervaloJogo);
+
+                    // AQUI --> implementar uma mensagem do tipo
+                    // JOGO PAUSADO p/ aparecer na tela
                 }else{
-                    intervaloJogo = setIntervalo(atualizarJogo, 500);
+                    intervaloJogo = setInterval(atualizarJogo, 500);
                 }
             }
 
-            //==========================
-            //=== CONTROLE DE TECLADO 
-            //=========================
-            document.addEventListener('keydown', function(event){
+            //===========================
+            //==== CONTROLE DE TECLADO
+            //===========================
+           document.addEventListener('keydown', function(event){
+               
                 if(event.key === 'ArrowDown'){
                     event.preventDefault();
                     mudarDirecao('baixo');
                 }else if(event.key === 'ArrowUp'){
                     event.preventDefault();
-                    mudarDirecao ('cima');
+                    mudarDirecao('cima');
                 }else if(event.key === 'ArrowLeft'){
                     event.preventDefault();
-                    mudarDirecao ('esquerda');
+                    mudarDirecao('esquerda');
                 }else if(event.key === 'ArrowRight'){
                     event.preventDefault();
-                    mudarDirecao ('direita');
+                    mudarDirecao('direita');
                 }else if(event.key === ' '){
+                    event.preventDefault();
                     pausarJogo();
                 }
-            });
-            
+           });
+
 
         </script>
 
