@@ -296,8 +296,17 @@
 
                // adiciona nova cabeça
                cobra.unshift(cabeca);
+
+              if(cabeca.x === comida.x && cabeca.y === comida.y){
+                //colisâo com a comida 
+
+              }else{
+
+                cobra.pop();
+                
+              }
                //remover o último elemento do vetor
-               cobra.pop();
+
                desenhar();                
             }
             
@@ -419,9 +428,9 @@
                 }
             }
 
-            //============================
-            //=====  MUDA A DIREÇÃO DA COBRA - CIMA, BAIXO, ESQUE, DIREI
-            //=============================
+            //=======================================================
+            //  MUDA A DIREÇÃO DA COBRA - CIMA, BAIXO, ESQUE, DIREI
+            //=======================================================
             function mudarDirecao(novaDirecao){
               
                 if(novaDirecao === 'cima'    &&  direcao !== 'baixo'){
@@ -443,7 +452,7 @@
             
 
             //============================
-            //==== PAUSAR O JOGO
+            //    PAUSAR O JOGO
             //============================
             function pausarJogo(){
                 if(!jogoAtivo){
