@@ -294,11 +294,29 @@
                     return;
                }
 
+
+               
+               //VERIFICA COLISÃO COM O PROPPRIO CORPO 
+                 for(let i = 0; i < cobra.length; i++){
+                     let pedacoCorpo = cobra [i];
+
+                     if(cabeca.x === pedacoCorpo.x && cabeca.y === pedacoCorpo.y){
+                        fimDeJogo();
+                        return;
+                     }
+                 }
+
+
+
+
+
+
+
                // adiciona nova cabeça
                cobra.unshift(cabeca);
 
               if(cabeca.x === comida.x && cabeca.y === comida.y){
-                pntos = pontos +1;
+                pontos = pontos +1;
 
 
                 atualizarPainelPontos();
@@ -312,7 +330,7 @@
             }
             
             //==============
-            // ATUALIZA OS VALORES DO PAINE L DE PONTUAÇÃO + RECORD  
+            // ATUALIZA OS VALORES DO PAINEL DE PONTUAÇÃO + RECORD  
             //=======================================================
             function atualizarPainelPontos(){
                document.getElementById('pontos').textContent = pontos;
