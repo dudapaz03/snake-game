@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jogo da Cobrinha</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <a class="voltar" href="../../index.html">&#8592; Voltar ao portal</a>
+    <h1>&#128013; Jogo da Cobrinha</h1>
+
+    <div class="info">
+        <div class="stat"><small>Pontos</small><span id="pontos">0</span></div>
+        <div class="stat"><small>Recorde</small><span id="recorde">0</span></div>
+        <div class="stat"><small>Nível</small><span id="nivel">1</span></div>
+        <div class="stat"><small>Combo</small><span id="combo">x1</span></div>
+    </div>
+
+    <canvas id="canvas" width="400" height="400"></canvas>
+
+    <div class="opcoes">
+        <select id="dificuldade" aria-label="Dificuldade">
+            <option value="facil">Fácil</option>
+            <option value="normal" selected>Normal</option>
+            <option value="dificil">Difícil</option>
+        </select>
+        <label><input type="checkbox" id="atravessar"> Atravessar paredes</label>
+        <label><input type="checkbox" id="som" checked> Som</label>
+    </div>
+
+    <div class="controles">
+        <button id="btnIniciar">Iniciar Jogo</button>
+        <button id="btnPausar" class="sec">Pausar / Continuar</button>
+    </div>
+
+    <div class="teclas">
+        <div class="tecla vazio"></div>
+        <button class="tecla" data-dir="cima" aria-label="Cima">&#9650;</button>
+        <div class="tecla vazio"></div>
+        <button class="tecla" data-dir="esquerda" aria-label="Esquerda">&#9668;</button>
+        <button class="tecla" data-dir="baixo" aria-label="Baixo">&#9660;</button>
+        <button class="tecla" data-dir="direita" aria-label="Direita">&#9658;</button>
+    </div>
+
+    <div class="instrucoes">
+        <h3>Como jogar</h3>
+        <p>Use as setas, WASD, os botões acima ou deslize o dedo sobre o jogo. Espaço ou P pausa; Enter inicia.</p>
+        <p>&#127822; Maçã: 10 pontos. Comer várias seguidas (em até 3 s) aumenta o combo, até x5.</p>
+        <p>&#11088; Estrela dourada: vale 5 maçãs, mas some em 5 segundos.</p>
+        <p>A cada 5 comidas você sobe de nível e a cobra fica mais rápida.</p>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
